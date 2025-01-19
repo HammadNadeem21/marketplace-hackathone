@@ -17,6 +17,7 @@ import Bitcoin from "../../../../public/payment/Bitcoin.png";
 import view1 from "../../../../public/detail/View1.png";
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -632,6 +633,10 @@ const Payment = () => {
        {/* LeftSide (Start) */}
 
       </div>
+
+      
+      {/* Footer */}
+<Footer/>
     </div>
   );
 };

@@ -26,7 +26,8 @@ export default function Home() {
    {/* Recomended Cars */}
    <Recomended/>
 
-    
+    {/* Footer */}
+    <Footer/>
    </div>
   );
 }

@@ -18,6 +18,8 @@ import { SelectAdmin } from "@/components/SelectAdmin";
 import { Component } from "@/components/chart";
 import Navbar from "@/components/Navbar";
 import MobileAdmin from "@/components/MobileAdmin";
+import Footer from "@/components/Footer";
+
 
 
 
@@ -560,6 +562,10 @@ const Admin = () => {
 
 
       </div>
+
+
+            {/* Footer */}
+     <Footer/>
 
     </div>
   );

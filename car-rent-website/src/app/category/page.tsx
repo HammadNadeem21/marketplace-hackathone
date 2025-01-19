@@ -25,6 +25,7 @@ import { TbSwitchVertical } from "react-icons/tb";
 
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -55,7 +56,7 @@ export default function Category() {
       <div>
         <Navbar />
       </div>
-      {/* Navbar (start) */}
+      {/* Navbar (End) */}
 
       <div className="grid md:grid-cols-[25%,75%] grid-cols-1">
         {/* sidebar */}
@@ -987,7 +988,11 @@ export default function Category() {
         </div>
         {/* Cars Section (End) */}
       </div>
+
+{/* Footer */}
+<Footer/>
+
     </div>
-    // </div>
+    
   );
 }

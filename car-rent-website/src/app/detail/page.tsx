@@ -4,6 +4,8 @@ import React from "react";
 import { SliderDemo } from "@/components/Slider";
 import Navbar from "@/components/Navbar";
 import MobileSidebar from "@/components/MobileSidebar";
+import Footer from "@/components/Footer";
+
 
 // Images
 import Image from "next/image";
@@ -932,6 +934,9 @@ const Detail = () => {
           {/* Cars Section (End) */}
         </div>
       </div>
+
+      {/* Footer */}
+<Footer/>
     </div>
   );
 };
