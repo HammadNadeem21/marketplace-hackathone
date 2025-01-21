@@ -50,7 +50,9 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-const Detail = () => {
+const Detail = (params:any) => {
+  console.log(params);
+  
   return (
     <div>
       {/* Mobile Sidebar (Start) */}

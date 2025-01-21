@@ -89,14 +89,14 @@ const Ads = () => {
                 </div>
               </div>
 
-              <Link href={'/detail'}>
+              {/* <Link href={'/detail'}> */}
 
               <button
                 className={`${PlusJakartaSans600.className} text-[16px] text-white w-[122px] h-[44px] bg-[#54A6FF] rounded-[4px] lg:mt-0 md:mt-[20px] xs:mt-[30px] mt-[35px] cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
               >
                 Rental Car
               </button>
-              </Link>
+              {/* </Link> */}
 
               <div className="xl:w-[406px] lg:w-[350px] h-[106px] lg:ml-[150px] md:ml-[0px] xs:ml-[110px] lg:mt-[-20px] md:mt-[10px] xs:mt-[-10px] mt-[30px] ml-[30px]">
                 <Image src={Ad2Image} alt="Ad1-Img" />

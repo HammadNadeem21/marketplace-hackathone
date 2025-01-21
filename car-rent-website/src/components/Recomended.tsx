@@ -26,6 +26,7 @@ import terios from '../../public/recomended/terios.png';
 import crvb from '../../public/recomended/crvb.png';
 import mgzx from '../../public/recomended/mgzx.png';
 import mgzs from '../../public/recomended/mgzs.png';
+import first from '../../public/popularCars/first.png'
 
 // Icons
 import { MdFavorite } from "react-icons/md";
@@ -45,6 +46,7 @@ const Recomended = () => {
 
       {/* Cards Container */}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+    
         {/* Car 1 */}
         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
@@ -86,6 +88,9 @@ const Recomended = () => {
 
           <div className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}>$80.00</div>
         </div>
+        
+
+
 
         {/* Car 2 */}
         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
@@ -126,6 +131,9 @@ const Recomended = () => {
             </button>
           </div>
         </div>
+        
+
+
 
         {/* Car 3 */}
         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
@@ -166,6 +174,10 @@ const Recomended = () => {
             </button>
           </div>
         </div>
+        
+
+
+
 
         {/* Car 4 */}
         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
@@ -206,6 +218,9 @@ const Recomended = () => {
             </button>
           </div>
         </div>
+        
+
+
 
 
 
