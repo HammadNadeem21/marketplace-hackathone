@@ -16,4 +16,8 @@ export interface Cars {
     pricePerDay : string;
     originalPrice : string;
     tags : string[];
+    slug : {
+        _type : "slug"
+        current : string
+    }
 }

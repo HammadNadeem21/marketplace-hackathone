@@ -35,7 +35,11 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-const Payment = () => {
+
+
+const Payment = ({params}:{params:{detail:string, payment:string}}) => {
+  console.log(params);
+  
   return (
     <div>
       {/* Navbar */}
@@ -514,9 +518,9 @@ const Payment = () => {
             {/* Paypal */}
             <div className="w-full h-[48px]  flex justify-between bg-[#F6F7F9] mt-5 px-5 py-3 rounded-[10px]">
               <div>
-                <input type="radio" name="" id="rational" />
+                <input type="radio" name="" id="paypal" />
                 <label
-                  htmlFor="rational"
+                  htmlFor="paypal"
                   className={`${PlusJakartaSans600.className} xs:text-[16px] text-[14px] text-[#1A202C] ml-5 mt-3`}
                 >
                   PayPal
@@ -531,9 +535,9 @@ const Payment = () => {
             {/* Bitcoin */}
             <div className="w-full h-[48px]  flex justify-between bg-[#F6F7F9] mt-5 px-5 py-3 rounded-[10px]">
               <div>
-                <input type="radio" name="" id="rational" />
+                <input type="radio" name="" id="Bitcoin" />
                 <label
-                  htmlFor="rational"
+                  htmlFor="Bitcoin"
                   className={`${PlusJakartaSans600.className} xs:text-[16px] text-[14px] text-[#1A202C] ml-5 mt-3`}
                 >
                   Bitcoin

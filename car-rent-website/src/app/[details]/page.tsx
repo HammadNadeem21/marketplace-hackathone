@@ -50,7 +50,7 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-const Detail = (params:any) => {
+const Detail = ({ params }: { params: { details: string } }) => {
   console.log(params);
   
   return (
@@ -273,9 +273,9 @@ const Detail = (params:any) => {
                       <div className="w-full h-full object-cover object-center py-5 px-5 block bg-white rounded-lg">
                         <div className="w-full h-[72px] ">
                           <h1
-                            className={`${PlusJakartaSans700.className} text-[32px] text-[#1A202C]`}
+                            className={`${PlusJakartaSans700.className} text-[32px] text-[#1A202C] capitalize`}
                           >
-                            Nissan GT - R
+                            {params.details}
                           </h1>
 
                           <div className="flex">
@@ -390,7 +390,7 @@ const Detail = (params:any) => {
                           </div>
 
                           <div className="w-[200px] bg-white flex items-center justify-end">
-                            <Link href={"/detail/payment"}>
+                            <Link href={`/${params.details}/payment`}>
                               <button
                                 className={`${PlusJakartaSans700} xs:text-[16px] text-[12px] bg-[#3563E9] xs:w-[140px] w-[100px] xs:h-[56px] h-[45px] text-white rounded-[4px] mr-2 cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
                               >

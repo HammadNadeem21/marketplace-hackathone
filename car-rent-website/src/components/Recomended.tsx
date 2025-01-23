@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
 // Fonts
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -34,8 +35,25 @@ import { BsFillFuelPumpFill } from "react-icons/bs";
 import { TbSteeringWheel } from "react-icons/tb";
 import { FaUserGroup } from "react-icons/fa6";
 import Link from "next/link";
+import { Cars } from "../../types/cars";
+import { client } from "@/sanity/lib/client";
+import { allCars } from "@/lib/queries";
+import CarCard from "./CarCard";
+import { urlFor } from "@/sanity/lib/image";
 
 const Recomended = () => {
+   // fetch data from API
+    const [car, setCar] = useState<Cars[]>([]);
+    useEffect(() => {
+      async function getData() {
+        const fetchData: Cars[] = await client.fetch(allCars);
+        setCar(fetchData);
+      }
+      getData();
+    }, []);
+  
+    // Filter Array
+    const popularCars = car.filter((car) => car.tags.includes("recommended"));
   return (
     <div>
   <section className="container px-4 py-24 mx-auto">
@@ -45,10 +63,24 @@ const Recomended = () => {
       </div>
 
       {/* Cards Container */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+      {popularCars.map((items) => (
+              <CarCard
+                key={items._id}
+                name={items.name}
+                type={items._type}
+                image={items.image ? urlFor(items.image).url() : ""}
+                fuelCapacity={items.fuelCapacity}
+                transmission={items.transmission}
+                seatingCapacity={items.seatingCapacity}
+                pricePerDay={items.pricePerDay}
+                slug={items.slug.current}
+              />
+            ))}
+
     
         {/* Car 1 */}
-        <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+        {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
               All New Rush
@@ -87,13 +119,13 @@ const Recomended = () => {
           </div>
 
           <div className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}>$80.00</div>
-        </div>
+        </div> */}
         
 
 
 
         {/* Car 2 */}
-        <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+        {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
               CR -V
@@ -130,13 +162,13 @@ const Recomended = () => {
               Rent Now
             </button>
           </div>
-        </div>
+        </div> */}
         
 
 
 
         {/* Car 3 */}
-        <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+        {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
               All New Terios
@@ -173,14 +205,14 @@ const Recomended = () => {
               Rent Now
             </button>
           </div>
-        </div>
+        </div> */}
         
 
 
 
 
         {/* Car 4 */}
-        <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+        {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
               CR -V
@@ -217,7 +249,7 @@ const Recomended = () => {
               Rent Now
             </button>
           </div>
-        </div>
+        </div> */}
         
 
 
@@ -225,7 +257,7 @@ const Recomended = () => {
 
 
         {/* Car 5 */}
-        <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+        {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
             MG ZX Exclusice
@@ -263,10 +295,10 @@ const Recomended = () => {
             </button>
           </div>
           <div className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}>$80.00</div>
-        </div>
+        </div> */}
 
          {/* Car 6 */}
-         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+         {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
             New MG ZS
@@ -304,10 +336,10 @@ const Recomended = () => {
             </button>
           </div>
          
-        </div>
+        </div> */}
 
          {/* Car 7 */}
-         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+         {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
             MG ZX Exclusice
@@ -345,10 +377,10 @@ const Recomended = () => {
             </button>
           </div>
           <div className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}>$80.00</div>
-        </div>
+        </div> */}
 
          {/* Car 8 */}
-         <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
+         {/* <div className="w-full md:w-[304px] p-4 bg-white rounded-lg shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h1 className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}>
             New MG ZS
@@ -386,7 +418,7 @@ const Recomended = () => {
             </button>
           </div>
          
-        </div>
+        </div> */}
 
       </div>
       <div className=" flex justify-center mt-[100px]">
