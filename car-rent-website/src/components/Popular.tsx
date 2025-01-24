@@ -24,6 +24,7 @@ import { client } from "@/sanity/lib/client";
 import { allCars } from "@/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import CarCard from "./CarCard";
+import Link from "next/link";
 
 const Popular = () => {
   // fetch data from API
@@ -48,7 +49,9 @@ const Popular = () => {
             className={`${PlusJakartaSans600.className} w-full h-[30px] mb-5 flex justify-between`}
           >
             <h1 className="text-[#90A3BF] text-[16px]">Popular Cars</h1>
+            <Link href={`/category`}>
             <button className="text-[#3563E9] text-[16px]">View All</button>
+            </Link>
           </div>
 
       {/* Cards Container (Start)*/}
@@ -58,7 +61,7 @@ const Popular = () => {
               <CarCard
                 key={items._id}
                 name={items.name}
-                type={items._type}
+                type={items.type}
                 image={items.image ? urlFor(items.image).url() : ""}
                 fuelCapacity={items.fuelCapacity}
                 transmission={items.transmission}

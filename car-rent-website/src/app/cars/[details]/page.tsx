@@ -272,7 +272,7 @@ const Detail =  async ({ params }:carDetailPage) => {
                         </div>
 
                         <div className="w-full h-[106px] xs:mt-[20px] mt-[90px] xs:ml-[30px] ml-0">
-                          <Image src={car.image ?  urlFor(car.image).url() : ""} alt="Ad1-Img" height={500} width={500}
+                          <Image src={car.image ?  urlFor(car.image).url() : ""} alt="Ad1-Img" height={1000} width={1000}
                           className="w-[60%] h-full ml-14"
                           />
                         </div>

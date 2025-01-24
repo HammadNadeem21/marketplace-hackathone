@@ -43,9 +43,9 @@ const CarCard = (props:{name:string,type:string,image:string, fuelCapacity:strin
         <Image
           src={props.image}
           alt={props.name}
-          height={500}
-          width={500}
-          className="sm:w-[85%] xs:w-[65%] w-[85%] sm:h-[85%] xs:h-[90%] h-[75%] mt-2"
+          height={700}
+          width={700}
+          className="sm:w-[85%] xs:w-[65%] w-[85%] sm:h-[85%] xs:h-[90%] h-[55%] mt-2"
         />
       </div>
       <div className="flex justify-between items-center mb-6 mt-4">
