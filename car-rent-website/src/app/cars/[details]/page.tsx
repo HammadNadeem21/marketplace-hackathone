@@ -1,4 +1,5 @@
-import React from "react";
+// "use client"
+import React, { useEffect, useState } from "react";
 
 // components
 import { SliderDemo } from "@/components/Slider";
@@ -6,18 +7,8 @@ import Navbar from "@/components/Navbar";
 import MobileSidebar from "@/components/MobileSidebar";
 import Footer from "@/components/Footer";
 
-
 // Images
 import Image from "next/image";
-import first from '../../../../public/popularCars/first.png'
-import NissanGtR1 from '../../../../public/popularCars/NissanGtR1.png'
-import rollsRoyal from '../../../../public/popularCars/rollsRoyal.png'
-import crv from '../../../../public/recomended/crv.png'
-import rush from '../../../../public/recomended/rush.png'
-import terios from '../../../../public/recomended/terios.png'
-import mgzx from "../../../../public/recomended/mgzx.png";
-import Ad1Image from "../../../../public/Ad1Image.png";
-import View1 from "../../../../public/detail/View1.png";
 import View2 from "../../../../public/detail/View2.png";
 import View3 from "../../../../public/detail/View3.png";
 import review1 from "../../../../public/review/review1.png";
@@ -25,10 +16,7 @@ import review2 from "../../../../public/review/review2.png";
 import Link from "next/link";
 
 // Icons
-import { MdFavorite } from "react-icons/md";
-import { BsFillFuelPumpFill } from "react-icons/bs";
-import { TbSteeringWheel } from "react-icons/tb";
-import { FaUserGroup } from "react-icons/fa6";
+
 import { IoIosStar } from "react-icons/io";
 
 // Font
@@ -37,6 +25,8 @@ import { Cars } from "../../../../types/cars";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
+import { allCars } from "@/lib/queries";
+import CarCard from "@/components/CarCard";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -54,15 +44,13 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-
-
 // For Dynamic Car Data Routing
 interface carDetailPage {
-    params : Promise<{details : string}>
+  params: Promise<{ details: string }>;
 }
 
-async function getCarDetail (slug : string) : Promise<Cars> {
-return client.fetch(
+async function getCarDetail(slug: string): Promise<Cars> {
+  return client.fetch(
     groq`*[_type == "car" && slug.current == $slug][0]{
     name,
     type,
@@ -72,21 +60,19 @@ return client.fetch(
     pricePerDay,
     image,
     
-    }`,{slug}
-)
+    }`,
+    { slug }
+  );
 }
 
+const Detail = async ({ params }: carDetailPage) => {
+  const { details } = await params;
+  const car = await getCarDetail(details);
 
+  // Fetch Data from sanity
+  const fetchData = await client.fetch(allCars);
+  const res = await fetchData;
 
-
-
-const Detail =  async ({ params }:carDetailPage) => {
-  const {details} = await params;
-  const car = await getCarDetail(details)
-
-  console.log(details);
-  
-  
   return (
     <div>
       {/* Mobile Sidebar (Start) */}
@@ -96,7 +82,7 @@ const Detail =  async ({ params }:carDetailPage) => {
       {/* Mobile Sidebar (End) */}
       {/* Navbar */}
       <Navbar />
-      
+
       <div className="grid md:grid-cols-[25%,75%] grid-cols-1">
         {/* sidebar (Start) */}
         <div className="w-full md:block hidden">
@@ -272,8 +258,12 @@ const Detail =  async ({ params }:carDetailPage) => {
                         </div>
 
                         <div className="w-full h-[106px] xs:mt-[20px] mt-[90px] xs:ml-[30px] ml-0">
-                          <Image src={car.image ?  urlFor(car.image).url() : ""} alt="Ad1-Img" height={1000} width={1000}
-                          className="w-[60%] h-full ml-14"
+                          <Image
+                            src={car.image ? urlFor(car.image).url() : ""}
+                            alt="Ad1-Img"
+                            height={1000}
+                            width={1000}
+                            className="w-[70%] h-full ml-14"
                           />
                         </div>
                       </div>
@@ -281,10 +271,11 @@ const Detail =  async ({ params }:carDetailPage) => {
 
                     <div className="md:p-2 p-1 w-1/3 flex items-center">
                       <Image
-                        src={car.image ?  urlFor(car.image).url() : ""}
+                        src={car.image ? urlFor(car.image).url() : ""}
                         alt="view-1"
                         className="w-full h-[60%]  block"
-                        height={500} width={500}
+                        height={500}
+                        width={500}
                       />
                     </div>
 
@@ -342,9 +333,8 @@ const Detail =  async ({ params }:carDetailPage) => {
                         </div>
 
                         {/* Type */}
-                     
 
-                        <div className="w-full xs:mt-[60px] grid xl:grid-cols-2 lg:grid-cols-1 xs:grid-cols-2 grid-cols-1  mt-[80px]" >
+                        <div className="w-full xs:mt-[60px] grid xl:grid-cols-2 lg:grid-cols-1 xs:grid-cols-2 grid-cols-1  mt-[80px]">
                           <div className="w-full">
                             <div className="w-[200px] h-[30px] flex justify-between">
                               <h2
@@ -462,8 +452,8 @@ const Detail =  async ({ params }:carDetailPage) => {
               </div>
 
               {/* Review 1 */}
-             
-               <div className="w-full mt-8">
+
+              <div className="w-full mt-8">
                 <div className="w-full h-[56px] flex justify-between">
                   <div className="flex">
                     <Image
@@ -492,11 +482,11 @@ const Detail =  async ({ params }:carDetailPage) => {
                       21 July 2022
                     </h2>
                     <div className="flex mt-1 ml-[40px]">
-                      <IoIosStar  className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
-                      <IoIosStar  className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
-                      <IoIosStar  className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
-                      <IoIosStar  className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
-                      <IoIosStar  className="text-[#90A3BF] xs:text-[16px] text-[12px]" />
+                      <IoIosStar className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
+                      <IoIosStar className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
+                      <IoIosStar className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
+                      <IoIosStar className="text-[#FBAD39] xs:text-[16px] text-[12px]" />
+                      <IoIosStar className="text-[#90A3BF] xs:text-[16px] text-[12px]" />
                     </div>
                   </div>
                 </div>
@@ -505,16 +495,17 @@ const Detail =  async ({ params }:carDetailPage) => {
                   <p
                     className={`${PlusJakartaSans500.className} text-[12px] text-[#596780] break-words xs:mt-0 mt-5`}
                   >
-                    We are very happy with the service from the MORENT App. Morent has a low
-                    price and also a large variety of cars with good and comfortable
-                    facilities. In addition, the service provided by the officers is also
-                    very friendly and very polite.
+                    We are very happy with the service from the MORENT App.
+                    Morent has a low price and also a large variety of cars with
+                    good and comfortable facilities. In addition, the service
+                    provided by the officers is also very friendly and very
+                    polite.
                   </p>
                 </div>
               </div>
 
               {/* Review 2 */}
-            
+
               <div className="w-full mt-8">
                 <div className="w-full h-[56px] flex justify-between">
                   <div className="flex">
@@ -557,428 +548,39 @@ const Detail =  async ({ params }:carDetailPage) => {
                   <p
                     className={`${PlusJakartaSans500.className} text-[12px] text-[#596780] break-words xs:mt-0 mt-5`}
                   >
-                    We are very happy with the service from the MORENT App. Morent has a low
-                    price and also a large variety of cars with good and comfortable
-                    facilities. In addition, the service provided by the officers is also
-                    very friendly and very polite.
+                    We are very happy with the service from the MORENT App.
+                    Morent has a low price and also a large variety of cars with
+                    good and comfortable facilities. In addition, the service
+                    provided by the officers is also very friendly and very
+                    polite.
                   </p>
                 </div>
               </div>
-
-
-
             </div>
           </div>
           {/* Cars Section (Start) */}
 
           <div className=" mt-5 grid xl:grid-cols-3 gap-2 justify-center grid-cols-1 px-4 py-5">
-            {/* Card 1 */}
-            <div className="w-full  p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  Koenigsegg
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                Sport
-              </h2>
-              <div className="w-full flex justify-center my-6">
-                <Image
-                  src={first}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    90L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    2 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $99.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-
-                <Link href={`/cars/${details}/payment`}>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-                </Link>
-              </div>
-             
-            </div>
-
-            {/* Card 2 */}
-            <div className="w-full xl:mt-0 mt-3  p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                 Nissan GT - R
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                Sport
-              </h2>
-              <div className="w-full flex justify-center my-6">
-                <Image
-                  src={NissanGtR1}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    80L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    4 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $80.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-              </div>
-              <div
-                className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}
-              >
-                $100.00
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="w-full xl:mt-0 mt-3  p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  Rolls-Royce
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                Sport
-              </h2>
-              <div className="w-full flex justify-center my-6">
-                <Image
-                  src={rollsRoyal}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    70L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    4 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $96.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-              </div>
-             
-            </div>
-
-            {/* Card 4 */}
-            <div className="w-full  xl:mt-0 p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  All New Rush
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                SUV
-              </h2>
-              <div className="w-full flex justify-center my-6">
-                <Image
-                  src={rush}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    70L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    6 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $72.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-              </div>
-              <div
-                className={`${PlusJakartaSans700.className} text-[14px] text-[#90A3BF] line-through mt-[-10px] `}
-              >
-                $80.00
-              </div>
-            </div>
-
-            {/* Card 5 */}
-            <div className="w-full xl:mt-0 mt-3 p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  CR - V
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                SUV
-              </h2>
-              <div className="w-full flex justify-center mt-8">
-                <Image
-                  src={crv}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6 mt-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    80L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    6 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $80.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-              </div>
-             
-            </div>
-
-            {/* Card 6 */}
-            <div className="w-full xl:mt-0 mt-3 p-4 bg-white rounded-lg shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  All New Terios
-                </h1>
-                <MdFavorite size={24} className="text-[#ED3F3F]" />
-              </div>
-              <h2
-                className={`${PlusJakartaSans500.className} text-[14px] text-[#90A3BF]`}
-              >
-                SUV
-              </h2>
-              <div className="w-full flex justify-center my-6">
-                <Image
-                  src={terios}
-                  alt="Rolls Royce"
-                  height={300}
-                  width={300}
-                  className="w-[232px]"
-                />
-              </div>
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex items-center">
-                  <BsFillFuelPumpFill size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    90L
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <TbSteeringWheel size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    Manual
-                  </p>
-                </div>
-                <div className="flex items-center">
-                  <FaUserGroup size={24} className="text-[#90A3BF]" />
-                  <p
-                    className={`${PlusJakartaSans500.className} text-[#90A3BF] text-[15px] ml-2`}
-                  >
-                    6 People
-                  </p>
-                </div>
-              </div>
-              <div className="flex justify-between items-center">
-                <h1
-                  className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
-                >
-                  $74.00/ <span className="text-[14px] text-[#90A3BF]">day</span>
-                </h1>
-                <button
-                  className={`${PlusJakartaSans600.className} bg-[#3563E9] text-white text-[16px] w-[116px] h-[44px] rounded-sm cursor-pointer hover:bg-[#002fbb] transition-all duration-300`}
-                >
-                  Rent Now
-                </button>
-              </div>
-             
-            </div>
+            {res.map((items: Cars) => (
+              <CarCard
+                key={items._id}
+                name={items.name}
+                type={items.type}
+                image={items.image ? urlFor(items.image).url() : ""}
+                fuelCapacity={items.fuelCapacity}
+                transmission={items.transmission}
+                seatingCapacity={items.seatingCapacity}
+                pricePerDay={items.pricePerDay}
+                slug={items.slug.current}
+              />
+            ))}
           </div>
           {/* Cars Section (End) */}
         </div>
       </div>
 
       {/* Footer */}
-<Footer/>
+      <Footer />
     </div>
   );
 };
