@@ -8,16 +8,7 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   display: "swap",
   subsets: ["latin"],
 });
-// const PlusJakartaSans700 = Plus_Jakarta_Sans({
-//   weight: "700",
-//   display: "swap",
-//   subsets: ["latin"],
-// });
-// const PlusJakartaSans500 = Plus_Jakarta_Sans({
-//   weight: "500",
-//   display: "swap",
-//   subsets: ["latin"],
-// });
+
 
 import { Cars } from "../../types/cars";
 import { client } from "@/sanity/lib/client";
@@ -27,7 +18,8 @@ import CarCard from "./CarCard";
 import Link from "next/link";
 
 const Popular = () => {
-  // fetch data from API
+
+  // fetch data from Sanity
   const [car, setCar] = useState<Cars[]>([]);
   useEffect(() => {
     async function getData() {
@@ -37,6 +29,7 @@ const Popular = () => {
     getData();
   }, []);
 
+  
   // Filter Array
   const popularCars = car.filter((car) => car.tags.includes("popular"));
 
