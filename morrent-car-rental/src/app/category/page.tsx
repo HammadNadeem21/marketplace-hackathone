@@ -1,22 +1,16 @@
-"use client";
 import { SelectRent } from "@/components/Select_rent";
 
 import { SliderDemo } from "@/components/Slider";
 import MobileSidebar from "@/components/MobileSidebar";
 import Navbar from "@/components/Navbar";
 
-
 import { TbSwitchVertical } from "react-icons/tb";
 
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
-import { useState, useEffect } from "react";
-import { Cars } from "../../../types/cars";
-import { client } from "@/sanity/lib/client";
-import { allCars } from "@/lib/queries";
-import CarCard from "@/components/CarCard";
-import { urlFor } from "@/sanity/lib/image";
+
+import CategoryCard from "./CategoryCard";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -31,25 +25,6 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
 });
 
 export default function Category() {
-  // fetch data from API
-  const [car, setCar] = useState<Cars[]>([]);
-  useEffect(() => {
-    async function getData() {
-      const fetchData: Cars[] = await client.fetch(allCars);
-      setCar(fetchData);
-    }
-    getData();
-  }, []);
-
-  const sportsCars = car;
-  const sedanCars = car.filter((car) => car.type === "Sedan");
-  const electricCars = car.filter((car) => car.type === "Electric");
-  const gasolineCars = car.filter((car) => car.type === "Gasoline");
-  const dieselCars = car.filter((car) => car.type === "Diesel");
-  const hybridCars = car.filter((car) => car.type === "Hybrid");
-  const suvCars = car.filter((car) => car.type === "SUV");
-  const hatchbackCars = car.filter((car) => car.type === "Hatchback");
-
   return (
     <div>
       {/* Mobile Sidebar (Start) */}
@@ -360,202 +335,10 @@ export default function Category() {
 
           {/* Cars Section (Start) */}
 
-          <div className="mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold">
-              Sports
-            </h1>
-            {/* <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div> */}
+          <CategoryCard />
 
-            {sportsCars.map((items) => (
-              <CarCard
-                key={items._id}
-                name={items.name}
-                type={items.type}
-                image={items.image ? urlFor(items.image).url() : ""}
-                fuelCapacity={items.fuelCapacity}
-                transmission={items.transmission}
-                seatingCapacity={items.seatingCapacity}
-                pricePerDay={items.pricePerDay}
-                slug={items.slug.current}
-                _id={items._id}
-                quantity={items.quantity}
-              />
-            ))}
-
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Sedan
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {sedanCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Electric
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {electricCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Gasoline
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {gasolineCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Diesel
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {dieselCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Hybrid
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {hybridCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              SUV
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-20 h-1 rounded-full bg-blue-600"></div>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {suvCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-
-
-            <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
-              Hatchback
-            </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
-
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
-              {hatchbackCars.map((items) => (
-                <CarCard
-                  key={items._id}
-                  name={items.name}
-                  type={items.type}
-                  image={items.image ? urlFor(items.image).url() : ""}
-                  fuelCapacity={items.fuelCapacity}
-                  transmission={items.transmission}
-                  seatingCapacity={items.seatingCapacity}
-                  pricePerDay={items.pricePerDay}
-                  slug={items.slug.current}
-                  _id={items._id}
-                  quantity={items.quantity}
-                />
-              ))}
-            </div>
-
-          </div>
+          {/* Cars Section (End) */}
         </div>
-        {/* Cars Section (End) */}
       </div>
 
       {/* Footer */}

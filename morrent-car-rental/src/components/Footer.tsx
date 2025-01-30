@@ -2,6 +2,7 @@ import React from "react";
 
 // Fonts
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Link from "next/link";
 const PlusJakartaSans = Plus_Jakarta_Sans({
   weight: "700",
   display: "swap",
@@ -26,11 +27,13 @@ const Footer = () => {
           {/* Logo and Description */}
           <div className="lg:m-0 m-auto">
             <div className="lg:w-[292px] h-auto md:w-[500px] lg:text-left sm:text-center text-left">
+              <Link href={'/'}>
               <h1
                 className={`${PlusJakartaSans.className} lg:text-[32px] md:text-[40px] text-[24px] text-[#3563E9]`}
               >
                 MORENT
               </h1>
+              </Link>
               <p
                 className={`${PlusJakartaSans500.className} text-[16px] lg:text-[#13131399] text-[#90A3BF] mt-2`}
               >

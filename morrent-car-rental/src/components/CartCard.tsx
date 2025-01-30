@@ -7,11 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { urlFor } from "@/sanity/lib/image";
 import { addCart, deleteItem, subtractCart } from "@/app/store/features/cart";
 
-interface cartcard {
-  src: StaticImageData;
-  title: string;
-  price: number;
-}
+
 
 const CartCard = () => {
   // for gain cart item

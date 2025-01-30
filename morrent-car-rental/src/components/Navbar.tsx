@@ -49,6 +49,7 @@ const Navbar = () => {
               </h1>
             </Link>
 
+{/* Mobile icon-bar (Start) */}
             <div className="xs:hidden cursor-pointer flex gap-[7px]">
               <div className="w-[40px] h-[40px] border border-[#C3D4E966] rounded-full px-1 py-1">
                 <MdFavorite className="text-[#717e96] text-[30px] hover:text-[#3563E9] transition-all duration-300 cursor-pointer" />
@@ -76,6 +77,8 @@ const Navbar = () => {
                 <AvatarDemo />
               </Link>
             </div>
+{/* Mobile icon-bar (End) */}
+
           </div>
 
           {/* Search-bar */}
@@ -100,9 +103,9 @@ const Navbar = () => {
         </div>
 
         <div className="md:w-[40%] w-[10%] h-[50px] flex md:justify-end lg:py-[5px] md:py-[6px]">
-          <div className=" w-[236px] h-[44px] md:flex lg:gap-[20px] gap-[12px] ml-2 hidden">
+          <div className=" w-[236px] h-[44px] md:flex lg:gap-[20px] gap-[10px] ml-2 hidden">
             {/* Favourite-icon */}
-            <div className="2xl:w-[45px] 2xl:h-[45px] lg:w-[40px] lg:h-[40px] md:w-[35px] md:h-[35px] border border-[#C3D4E966] rounded-full lg:py-[3.5px] lg:px-[4px] md:py-[3.5px] md:px-[4px]">
+            <div className="2xl:w-[45px] 2xl:h-[45px] lg:w-[40px] lg:h-[40px] md:w-[35px] md:h-[35px] border border-[#C3D4E966] rounded-full lg:py-[3.5px] lg:px-[4px] md:py-[3.5px] md:px-[4px] h-[30px]">
               <MdFavorite className="text-[#717e96] lg:text-[30px] md:text-[25px] cursor-pointer hover:text-[#3563E9] transition-all duration-300" />
             </div>
             {/* Notification-icon */}
@@ -137,7 +140,7 @@ const Navbar = () => {
           </div>
 
           {/* Avatar */}
-          <div className="md:ml-0 ml-[30px] xs:block hidden cursor-pointer">
+          <div className="md:ml-0 ml-[10px] xs:block hidden cursor-pointer">
             <Link href={"/admin"}>
               <AvatarDemo />
             </Link>

@@ -113,7 +113,7 @@ const CarCard = (props: {
         <h1
           className={`${PlusJakartaSans700.className} text-[20px] text-[#1A202C]`}
         >
-          {cartItem.pricePerDay}
+          {props.pricePerDay}
         </h1>
       </div>
 

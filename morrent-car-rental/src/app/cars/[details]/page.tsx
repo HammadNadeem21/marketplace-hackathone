@@ -1,5 +1,5 @@
-// "use client"
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 
 // components
 import { SliderDemo } from "@/components/Slider";
@@ -26,7 +26,8 @@ import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { allCars } from "@/lib/queries";
-import CarCard from "@/components/CarCard";
+import DetailCard from "./DetailCard";
+
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -560,23 +561,7 @@ const Detail = async ({ params }: carDetailPage) => {
           </div>
           {/* Cars Section (Start) */}
 
-          <div className=" mt-5 grid xl:grid-cols-3 gap-2 justify-center grid-cols-1 px-4 py-5">
-            {res.map((items: Cars) => (
-              <CarCard
-                key={items._id}
-                name={items.name}
-                type={items.type}
-                image={items.image ? urlFor(items.image).url() : ""}
-                fuelCapacity={items.fuelCapacity}
-                transmission={items.transmission}
-                seatingCapacity={items.seatingCapacity}
-                pricePerDay={items.pricePerDay}
-                slug={items.slug.current}
-                _id={items._id}
-                quantity={items.quantity}
-              />
-            ))}
-          </div>
+         <DetailCard/>
           {/* Cars Section (End) */}
         </div>
       </div>

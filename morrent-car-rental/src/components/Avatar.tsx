@@ -2,7 +2,7 @@ import avatar from "../../public/avatar.jpg"
 import {
     Avatar,
     AvatarFallback,
-    AvatarImage,
+  
   } from "@/components/ui/avatar"
 import Image from "next/image"
   

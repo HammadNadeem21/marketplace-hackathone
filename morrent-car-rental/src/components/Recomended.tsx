@@ -19,21 +19,6 @@ const PlusJakartaSans500 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-// Images
-import Image from "next/image";
-import rush from "../../public/recomended/rush.png";
-import crv from "../../public/recomended/crv.png";
-import terios from "../../public/recomended/terios.png";
-import crvb from "../../public/recomended/crvb.png";
-import mgzx from "../../public/recomended/mgzx.png";
-import mgzs from "../../public/recomended/mgzs.png";
-import first from "../../public/popularCars/first.png";
-
-// Icons
-import { MdFavorite } from "react-icons/md";
-import { BsFillFuelPumpFill } from "react-icons/bs";
-import { TbSteeringWheel } from "react-icons/tb";
-import { FaUserGroup } from "react-icons/fa6";
 import Link from "next/link";
 import { Cars } from "../../types/cars";
 import { client } from "@/sanity/lib/client";
@@ -64,7 +49,7 @@ const Recomended = () => {
           <h1 className="text-[#90A3BF] text-[16px]">Recommendation Cars</h1>
           <Link href={`/category`}>
             <button className="text-[#3563E9] text-[16px]">View All</button>
-            </Link>
+          </Link>
         </div>
 
         {/* Cards Container (Start)*/}
