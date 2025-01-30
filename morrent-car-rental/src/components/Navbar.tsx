@@ -1,5 +1,7 @@
+"use client";
 // Navbar Component
 import React from "react";
+import { useAppSelector } from "@/app/store/hooks";
 
 import Image from "next/image";
 
@@ -14,6 +16,8 @@ import { MdFavorite } from "react-icons/md";
 import { IoNotifications } from "react-icons/io5";
 // Setting-Icons
 import { IoMdSettings } from "react-icons/io";
+// Cart Icon
+import { IoMdCart } from "react-icons/io";
 
 // Avatar Component
 import { AvatarDemo } from "./Avatar";
@@ -28,18 +32,24 @@ const PlusJakartaSans = Plus_Jakarta_Sans({
 });
 
 const Navbar = () => {
+
+  // For Cart Item 
+  const cart = useAppSelector((state) => state.cart);
+
   return (
     <div className="bg-white w-full">
       <div className="w-full xs:h-[124px] h-[150px] border-b-[1px] border-[#C3D4E966] flex pt-[40px] xs:px-[50px] pl-[40px]">
         <div className="md:w-[60%] xs:w-[90%] w-[100%] h-[50px] xs:flex xs:justify-between">
           <div className="flex w-full justify-between">
-            <h1
-              className={`${PlusJakartaSans.className} xl:text-[32px] lg:text-[28px] font-[700] md:text-[25px] text-[20px] text-[#3563E9] cursor-pointer tracking-tighter lg:mt-0 md:mt-1 mt-1`}
-            >
-              MORENT
-            </h1>
-            <div className="xs:hidden cursor-pointer flex gap-[10px]">
+            <Link href={"/"}>
+              <h1
+                className={`${PlusJakartaSans.className} xl:text-[32px] lg:text-[28px] font-[700] md:text-[25px] text-[20px] text-[#3563E9] cursor-pointer tracking-tighter lg:mt-0 md:mt-1 mt-1`}
+              >
+                MORENT
+              </h1>
+            </Link>
 
+            <div className="xs:hidden cursor-pointer flex gap-[7px]">
               <div className="w-[40px] h-[40px] border border-[#C3D4E966] rounded-full px-1 py-1">
                 <MdFavorite className="text-[#717e96] text-[30px] hover:text-[#3563E9] transition-all duration-300 cursor-pointer" />
               </div>
@@ -51,6 +61,16 @@ const Navbar = () => {
               <div className="w-[40px] h-[40px] border border-[#C3D4E966] rounded-full px-1 py-1">
                 <IoMdSettings className="text-[#717e96] text-[30px] hover:text-[#3563E9] transition-all duration-300 cursor-pointer" />
               </div>
+
+              <Link href={"/cart"}>
+                <div className="relative w-[40px] h-[40px] border border-[#C3D4E966] rounded-full px-1 py-1">
+                  <IoMdCart className="text-[#717e96] text-[30px] hover:text-[#3563E9] transition-all duration-300 cursor-pointer" />
+                 
+                  {cart.length > 1 && <span className="absolute top-[-4px] right-1 rounded-full text-[10px] bg-[#3563E9] text-white  px-[5px] py-[1px]">
+                  {cart.length}
+                  </span> }
+                </div>
+              </Link>
 
               <Link href={"/admin"}>
                 <AvatarDemo />
@@ -99,7 +119,23 @@ const Navbar = () => {
             <div className="2xl:w-[45px] 2xl:h-[45px] lg:w-[40px] lg:h-[40px] md:w-[35px] md:h-[35px] border border-[#C3D4E966] rounded-full lg:py-[3.5px] lg:px-[4px] md:py-[3.5px] md:px-[4px]">
               <IoMdSettings className="text-[#717e96] lg:text-[30px] md:text-[25px] cursor-pointer hover:text-[#3563E9] transition-all duration-300" />
             </div>
+
+            {/* Cart-icon */}
+            <Link href={"/cart"}>
+              <div className="relative 2xl:w-[45px] 2xl:h-[45px] lg:w-[40px] lg:h-[40px] md:w-[35px] md:h-[35px] border border-[#C3D4E966] rounded-full lg:py-[3.5px] lg:px-[4px] md:py-[3.5px] md:px-[4px] group">
+                {/* cart Icon */}
+                <IoMdCart className="text-[#717e96] lg:text-[30px] md:text-[25px] cursor-pointer group-hover:text-[#3563E9] transition-all duration-300" />
+
+                {/* cart item */}
+                {cart.length > 0 && (
+                  <span className="absolute top-[-4px] right-1 rounded-full text-[10px] bg-[#3563E9] text-white  px-[5px] py-[1px]">
+                    {cart.length}
+                  </span>
+                )}
+              </div>
+            </Link>
           </div>
+
           {/* Avatar */}
           <div className="md:ml-0 ml-[30px] xs:block hidden cursor-pointer">
             <Link href={"/admin"}>

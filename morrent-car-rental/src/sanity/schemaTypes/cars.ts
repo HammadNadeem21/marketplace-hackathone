@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export default {
   name: "car",
   type: "document",
@@ -7,7 +9,7 @@ export default {
       name: "name",
       type: "string",
       title: "Car Name",
-    },
+    }, 
     {
       name: "slug",
       type: "slug",
@@ -51,6 +53,10 @@ export default {
       type: "string",
       title: "Price Per Day",
       description: "Rental price per day",
+    },{
+      name : "quantity",
+      type : "number",
+      title : "Quantity"
     },
     {
       name: "originalPrice",

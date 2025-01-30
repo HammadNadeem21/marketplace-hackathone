@@ -41,7 +41,7 @@ export default function Category() {
     getData();
   }, []);
 
-  const sportsCars = car.filter((car) => car.type === "Sport");
+  const sportsCars = car;
   const sedanCars = car.filter((car) => car.type === "Sedan");
   const electricCars = car.filter((car) => car.type === "Electric");
   const gasolineCars = car.filter((car) => car.type === "Gasoline");
@@ -364,7 +364,7 @@ export default function Category() {
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold">
               Sports
             </h1>
-            <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
+            {/* <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div> */}
 
             {sportsCars.map((items) => (
               <CarCard
@@ -377,8 +377,13 @@ export default function Category() {
                 seatingCapacity={items.seatingCapacity}
                 pricePerDay={items.pricePerDay}
                 slug={items.slug.current}
+                _id={items._id}
+                quantity={items.quantity}
               />
             ))}
+
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Sedan
@@ -396,9 +401,14 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Electric
@@ -416,9 +426,14 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Gasoline
@@ -436,9 +451,14 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Diesel
@@ -456,9 +476,13 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Hybrid
@@ -476,6 +500,8 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
@@ -496,14 +522,19 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
+
 
             <h1 className="xl:col-span-3 md:col-span-2 col-span-1 text-center text-2xl font-bold mt-7">
               Hatchback
             </h1>
             <div className="xl:col-span-3 md:col-span-2 col-span-1 mx-auto w-24 h-1 rounded-full bg-blue-600"></div>
+
             <div className="xl:col-span-3 md:col-span-2 col-span-1 mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
               {hatchbackCars.map((items) => (
                 <CarCard
@@ -516,9 +547,12 @@ export default function Category() {
                   seatingCapacity={items.seatingCapacity}
                   pricePerDay={items.pricePerDay}
                   slug={items.slug.current}
+                  _id={items._id}
+                  quantity={items.quantity}
                 />
               ))}
             </div>
+
           </div>
         </div>
         {/* Cars Section (End) */}

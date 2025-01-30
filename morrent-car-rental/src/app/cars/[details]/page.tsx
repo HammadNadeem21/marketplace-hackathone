@@ -572,6 +572,8 @@ const Detail = async ({ params }: carDetailPage) => {
                 seatingCapacity={items.seatingCapacity}
                 pricePerDay={items.pricePerDay}
                 slug={items.slug.current}
+                _id={items._id}
+                quantity={items.quantity}
               />
             ))}
           </div>

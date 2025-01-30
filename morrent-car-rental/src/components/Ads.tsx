@@ -21,7 +21,7 @@ const PlusJakartaSans500 = Plus_Jakarta_Sans({
 
 const Ads = () => {
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 ">
       <div className="container lg:px-5 md:px-2 xs:px-4 px-8 py-16 mx-auto">
         <div className="grid md:grid-cols-2 grid-cols-1 xs:-m-4 -m-12">
           {/* Ad 1 (Start)*/}
@@ -56,12 +56,12 @@ const Ads = () => {
                 Rental Car
               </button></Link>
 
-              <div className="xl:w-[406px] lg:w-[350px] h-[106px] lg:ml-[110px] md:ml-[0px] xs:ml-[110px] lg:mt-[-20px] md:mt-[10px] xs:mt-[-10px] mt-[30px] ml-[30px]">
+              <div className="xl:w-[406px] lg:w-[350px] xs:w-[300px] w-[250px] h-[106px] lg:ml-[110px] md:ml-[0px] xs:ml-[110px] lg:mt-[-20px] md:mt-[10px] xs:mt-[-10px] mt-[30px] ml-[30px]">
                 <Image src={Ad1Image} alt="Ad1-Img" />
               </div>
             </div>
           </div>
-          {/* Ad 1 (Start)*/}
+          {/* Ad 1 (End)*/}
 
 
           {/* Ad 2 (Start)*/}
@@ -98,7 +98,7 @@ const Ads = () => {
               </button>
               </Link>
 
-              <div className="xl:w-[406px] lg:w-[350px] h-[106px] lg:ml-[150px] md:ml-[0px] xs:ml-[110px] lg:mt-[-20px] md:mt-[10px] xs:mt-[-10px] mt-[30px] ml-[30px]">
+              <div className="xl:w-[406px] lg:w-[300px] xs:w-[300px] w-[250px] h-[106px] lg:ml-[150px] md:ml-[0px] xs:ml-[110px] lg:mt-[-20px] md:mt-[10px] xs:mt-[-10px] mt-[30px] ml-[30px]">
                 <Image src={Ad2Image} alt="Ad1-Img" />
               </div>
             </div>

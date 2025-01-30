@@ -17,6 +17,7 @@ import { urlFor } from "@/sanity/lib/image";
 import CarCard from "./CarCard";
 import Link from "next/link";
 
+
 const Popular = () => {
 
   // fetch data from Sanity
@@ -32,6 +33,8 @@ const Popular = () => {
   
   // Filter Array
   const popularCars = car.filter((car) => car.tags.includes("popular"));
+
+// console.log(car);
 
   return (
     <div>
@@ -61,6 +64,8 @@ const Popular = () => {
                 seatingCapacity={items.seatingCapacity}
                 pricePerDay={items.pricePerDay}
                 slug={items.slug.current}
+                _id={items._id}
+                quantity={items.quantity}
               />
             ))}
           </div>

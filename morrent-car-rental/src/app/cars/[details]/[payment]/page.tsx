@@ -281,6 +281,8 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
           </div>
           {/* Billing Info (End) */}
 
+
+
           {/* Rational Info (Start) */}
 
           <div className="w-full px-5 py-5 rounded-lg mt-5 bg-white">
@@ -328,6 +330,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select Your City"
+                    subname="Locations"
                     opt1="10 December"
                     opt2="20 December"
                     opt3="30 December"
@@ -343,6 +346,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select your date"
+                    subname="Dates"
                     opt1="10 December"
                     opt2="20 December"
                     opt3="30 December"
@@ -358,6 +362,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select your time"
+                    subname="Timings"
                     opt1="8:00 am"
                     opt2="4:00 pm"
                     opt3="8:00 pm"
@@ -388,6 +393,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select Your City"
+                    subname="Locations"
                     opt1="Karachi"
                     opt2="Lahore"
                     opt3="Quetta"
@@ -403,6 +409,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select your date"
+                    subname="Dates"
                     opt1="10 December"
                     opt2="20 December"
                     opt3="30 December"
@@ -418,6 +425,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   </h1>
                   <SelectPay
                     name="Select your time"
+                    subname="Timings"
                     opt1="8:00 am"
                     opt2="4:00 pm"
                     opt3="8:00 pm"
