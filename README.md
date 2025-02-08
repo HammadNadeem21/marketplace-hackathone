@@ -20,4 +20,4 @@ Deployment Steps:
 1) Setup Environment Variables: Configure .env.local with API keys and database credentials.
 2) Build for Production: Execute npm run build.
 3) Deploy to Vercel: Push to GitHub and link repository with Vercel for automatic deployment.
-4) 
+
