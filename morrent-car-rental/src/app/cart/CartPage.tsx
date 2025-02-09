@@ -81,7 +81,7 @@ const CartPage = () => {
             <div className="bg-black/50 h-[1px] mt-0 mb-1"></div>
             {/* note */}
             <p className="text-xs font-semibold tracking-tighter text-black w-[97%] text-center italic mt-2">
-              {`*Delivery Charges and the Sales Tax will be calculated in the checkout page`}
+              {`*Delivery charges & fuel charges will be finalized at checkout.`}
             </p>
           </div>
         </div>
