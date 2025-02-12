@@ -102,8 +102,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="md:w-[40%] w-[10%] h-[50px] flex md:justify-end lg:py-[5px] md:py-[6px]">
-          <div className=" w-[236px] h-[44px] md:flex lg:gap-[20px] gap-[10px] ml-2 hidden">
+        <div className="md:w-[40%] w-[10%] h-[50px] flex justify-end lg:py-[5px] md:py-[6px] gap-4">
+          <div className=" w-[236px] h-[44px] xs:flex justify-end lg:gap-[20px] gap-[10px]  hidden">
             {/* Favourite-icon */}
             <div className="2xl:w-[45px] 2xl:h-[45px] lg:w-[40px] lg:h-[40px] md:w-[35px] md:h-[35px] border border-[#C3D4E966] rounded-full lg:py-[3.5px] lg:px-[4px] md:py-[3.5px] md:px-[4px] h-[30px]">
               <MdFavorite className="text-[#717e96] lg:text-[30px] md:text-[25px] cursor-pointer hover:text-[#3563E9] transition-all duration-300" />
@@ -140,12 +140,14 @@ const Navbar = () => {
           </div>
 
           {/* Avatar */}
-          <div className="md:ml-0 ml-[10px] xs:block hidden cursor-pointer">
+          <div className="md:ml-0 ml xs:block hidden cursor-pointer">
             <Link href={"/admin"}>
               <AvatarDemo />
             </Link>
           </div>
         </div>
+
+
       </div>
     </div>
   );

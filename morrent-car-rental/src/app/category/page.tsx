@@ -11,6 +11,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
 
 import CategoryCard from "./CategoryCard";
+import Navbar1 from "@/components/Navbar1";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -35,7 +36,7 @@ export default function Category() {
 
       {/* Navbar (start) */}
       <div>
-        <Navbar />
+        <Navbar1/>
       </div>
       {/* Navbar (End) */}
 

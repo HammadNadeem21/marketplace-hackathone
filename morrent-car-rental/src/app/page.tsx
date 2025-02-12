@@ -1,33 +1,30 @@
 import Ads from "@/components/Ads";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Navbar1 from "@/components/Navbar1";
 import PickUp from "@/components/PickUp";
 import Popular from "@/components/Popular";
 import Recomended from "@/components/Recomended";
 
-
 export default function Home() {
   return (
-   <div>
-    
-     {/* Navbar */}
-     <Navbar/>
-     
-   
-{/* Ads */}
-<Ads/>
+    <div>
+      {/* Navbar */}
+      <Navbar1 />
 
-{/* Pick Up */}
-<PickUp/>
+      {/* Ads */}
+      <Ads />
 
-{/* Popular Cars */}
-   <Popular/>
+      {/* Pick Up */}
+      <PickUp />
 
-   {/* Recomended Cars */}
-   <Recomended/>
+      {/* Popular Cars */}
+      <Popular />
 
-    {/* Footer */}
-    <Footer/>
-   </div>
+      {/* Recomended Cars */}
+      <Recomended />
+
+      {/* Footer */}
+      <Footer />
+    </div>
   );
 }

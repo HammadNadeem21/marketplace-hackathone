@@ -41,7 +41,7 @@ const Recomended = () => {
   const recomendedCars = car.filter((car) => car.tags.includes("recommended"));
   return (
     <div>
-      <section className="container px-4 py-24 mx-auto">
+      <section className=" px-4 py-24 mx-auto">
         {/* Header */}
         <div
           className={`${PlusJakartaSans600.className} w-full h-[30px] mb-5 flex justify-between`}

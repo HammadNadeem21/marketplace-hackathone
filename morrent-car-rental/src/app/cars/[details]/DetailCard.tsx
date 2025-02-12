@@ -22,7 +22,7 @@ const DetailCard = () => {
 
 
   return (
-    <div className=" mt-5 grid xl:grid-cols-3 gap-2 justify-center grid-cols-1 px-4 py-5">
+    <div className="mt-5 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-5 md:px-2 px-6 py-5 gap-4">
             {car.map((items) => (
               <CarCard
                 key={items._id}

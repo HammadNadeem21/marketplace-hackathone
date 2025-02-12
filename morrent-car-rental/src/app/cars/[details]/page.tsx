@@ -3,7 +3,6 @@ import React from "react";
 
 // components
 import { SliderDemo } from "@/components/Slider";
-import Navbar from "@/components/Navbar";
 import MobileSidebar from "@/components/MobileSidebar";
 import Footer from "@/components/Footer";
 
@@ -27,6 +26,7 @@ import { groq } from "next-sanity";
 import { urlFor } from "@/sanity/lib/image";
 import { allCars } from "@/lib/queries";
 import DetailCard from "./DetailCard";
+import Navbar1 from "@/components/Navbar1";
 
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
@@ -82,7 +82,7 @@ const Detail = async ({ params }: carDetailPage) => {
       </div>
       {/* Mobile Sidebar (End) */}
       {/* Navbar */}
-      <Navbar />
+     <Navbar1/>
 
       <div className="grid md:grid-cols-[25%,75%] grid-cols-1">
         {/* sidebar (Start) */}
@@ -401,19 +401,11 @@ const Detail = async ({ params }: carDetailPage) => {
                                 className={`${PlusJakartaSans700.className} xs:text-[25px] text-[20px] text-black`}
                               >
                                 {car.pricePerDay}
-                                {/* <span
-                                  className={`${PlusJakartaSans600.className} xs:text-[16px] text-[12px] text-[#90A3BF]`}
-                                >
-                                  days
-                                </span> */}
+                              
                               </h1>
                             </div>
                             <div>
-                              {/* <h3
-                                className={`${PlusJakartaSans700.className} text-[16px] text-[#90A3BF] line-through`}
-                              >
-                                $100.00
-                              </h3> */}
+                           
                             </div>
                           </div>
 

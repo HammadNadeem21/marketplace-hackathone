@@ -2,7 +2,6 @@ import React from "react";
 
 // components
 import { SelectPay } from "@/components/Selectpayment";
-import Navbar from "@/components/Navbar";
 
 // icons
 import { MdOutlineSecurity } from "react-icons/md";
@@ -14,7 +13,6 @@ import logo from "../../../../../public/payment/logo.png";
 import Visa from "../../../../../public/payment/Visa.png";
 import PayPal from "../../../../../public/payment/PayPal.png";
 import Bitcoin from "../../../../../public/payment/Bitcoin.png";
-import view1 from "../../../../../public/detail/View1.png";
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Footer from "@/components/Footer";
@@ -22,6 +20,7 @@ import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import { Cars } from "../../../../../types/cars";
 import { urlFor } from "@/sanity/lib/image";
+import Navbar1 from "@/components/Navbar1";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -63,12 +62,11 @@ return client.fetch(
 const Payment = async ({params}:{params:{details:string, payment:string}}) => {
   const {details, payment} = await params;
   const car = await getCarDetail(details)
-  console.log(params);
   
   return (
     <div>
       {/* Navbar */}
-      <Navbar />
+     <Navbar1/>
       <div className="grid lg:grid-cols-[30%,70%] grid-cols-1 px-6 gap-2">
         {/* right Side-(Start) */}
         <div className="w-full py-5">

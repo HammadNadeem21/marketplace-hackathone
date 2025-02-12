@@ -1,8 +1,7 @@
 import React from "react";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartPage from "./CartPage";
-import { useAppSelector } from "../store/hooks";
+import Navbar1 from "@/components/Navbar1";
 
 const Cart = () => {
 
@@ -10,8 +9,7 @@ const Cart = () => {
   return (
     <div>
       {/* Navbar */}
-      <Navbar />
-
+<Navbar1/>
       <CartPage/>
 
       {/* Footer */}

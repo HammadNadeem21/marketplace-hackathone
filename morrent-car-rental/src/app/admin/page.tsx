@@ -16,7 +16,6 @@ import { CgDarkMode } from "react-icons/cg";
 import { SwitchDemo } from "@/components/Switch";
 import { SelectAdmin } from "@/components/SelectAdmin";
 import { Component } from "@/components/chart";
-import Navbar from "@/components/Navbar";
 import MobileAdmin from "@/components/MobileAdmin";
 import Footer from "@/components/Footer";
 
@@ -31,6 +30,7 @@ import rollsRoyal from "../../../public/Admin/rollsRoyal.png";
 
 // Font
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Navbar1 from "@/components/Navbar1";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -73,7 +73,7 @@ const Admin = async () => {
       </div>
       {/* Mobile Sidebar (End) */}
       {/* Navbar */}
-      <Navbar />
+      <Navbar1/>
 
       {/* <NavbarAdmin/> */}
 

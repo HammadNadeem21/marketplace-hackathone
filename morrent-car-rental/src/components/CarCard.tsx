@@ -79,7 +79,7 @@ const CarCard = (props: {
           alt={props.name}
           height={1000}
           width={1000}
-          className="md:w-[85%] sm:w-[60%] xs:w-[65%] w-[75%] md:h-[75%] sm:h-[95%] xs:h-[90%] h-[85%] mt-2"
+          className="md:w-[85%] sm:w-[70%] xs:w-[65%] w-[80%] md:h-[65%] sm:h-[65%] xs:h-[90%] h-[80%] mt-2"
         />
       </div>
       <div className="flex justify-between items-center mb-6 mt-4">
