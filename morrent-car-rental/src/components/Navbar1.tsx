@@ -1,4 +1,5 @@
 
+
 "use client";
 // Navbar Component
 import React from "react";
@@ -58,27 +59,27 @@ const Navbar1 = () => {
           {/* Icons Section */}
           <div className="flex items-center space-x-3 sm:space-x-4 lg:justify-end">
             {/* Favorite */}
-            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-6 h-6 border rounded-full cursor-pointer group">
-              <MdFavorite className="text-[#717e96] xs:text-[24px] text-[15px] group-hover:text-[#3563E9]" />
+            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-8 h-8 border rounded-full cursor-pointer group">
+              <MdFavorite className="text-[#717e96] xs:text-[24px] text-[20px] group-hover:text-[#3563E9]" />
             </div>
 
             {/* Notifications */}
-            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-6 h-6 border rounded-full cursor-pointer group">
-              <IoNotifications className="text-[#717e96] xs:text-[24px] text-[15px] group-hover:text-[#3563E9]" />
+            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-8 h-8 border rounded-full cursor-pointer group">
+              <IoNotifications className="text-[#717e96] xs:text-[24px] text-[20px] group-hover:text-[#3563E9]" />
               <span className="absolute top-0 right-0 w-[10px] h-[10px] bg-[#FF4423] rounded-full border-2 border-white"></span>
             </div>
 
             {/* Settings */}
-            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-6 h-6 border rounded-full cursor-pointer group">
-              <IoMdSettings className="text-[#717e96] xs:text-[24px] text-[15px] group-hover:text-[#3563E9]" />
+            <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-8 h-8 border rounded-full cursor-pointer group">
+              <IoMdSettings className="text-[#717e96] xs:text-[24px] text-[20px] group-hover:text-[#3563E9]" />
             </div>
 
             {/* Cart */}
             <Link href={"/cart"}>
-              <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-6 h-6 border rounded-full group">
-                <IoMdCart className="text-[#717e96] xs:text-[24px] text-[15px] group-hover:text-[#3563E9] transition-all duration-300" />
+              <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-8 h-8 border rounded-full group">
+                <IoMdCart className="text-[#717e96] xs:text-[24px] text-[20px] group-hover:text-[#3563E9] transition-all duration-300" />
                 {cart.length > 0 && (
-                  <span className="absolute top-0 right-0 text-[10px] bg-[#3563E9] text-white px-[5px] py-[1px] rounded-full">
+                  <span className="absolute top-[1] right-0 text-[8px] bg-[#3563E9] text-white px-[5px] py-[1px] rounded-full">
                     {cart.length}
                   </span>
                 )}
