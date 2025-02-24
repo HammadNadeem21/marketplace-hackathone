@@ -36,7 +36,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Your City" opt1="Karachi" opt2="Lahore" opt3="Quetta" opt4="Islamabad" opt5="Faislabad"/>
                 </div>
               </div>
 
@@ -48,7 +48,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Data" opt1="6" opt2="12" opt3="18" opt4="24" opt5="30"/>
                 </div>
               </div>
               <div className="ml-2 mt-3">
@@ -59,7 +59,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Time" opt1="8:00 AM" opt2="12:00 PM" opt3="4:00 PM" opt4="8:00 PM" opt5="12:00 AM"/>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Your City" opt1="Karachi" opt2="Lahore" opt3="Quetta" opt4="Islamabad" opt5="Faislabad"/>
                 </div>
               </div>
 
@@ -102,7 +102,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Data" opt1="6" opt2="12" opt3="18" opt4="24" opt5="30"/>
                 </div>
               </div>
               <div className="ml-2 mt-3">
@@ -113,7 +113,7 @@ const PickUp = () => {
                 </h1>
 
                 <div className="w-126px h-[25px] mt-3">
-                  <SelectDemo />
+                  <SelectDemo name="Select Time" opt1="8:00 AM" opt2="12:00 PM" opt3="4:00 PM" opt4="8:00 PM" opt5="12:00 AM"/>
                 </div>
               </div>
             </div>

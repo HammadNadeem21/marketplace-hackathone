@@ -1,13 +1,28 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import  carSlice  from './features/car'
 import  cartSlice  from './features/cart'
+import storage from "redux-persist/lib/storage"
+import { persistReducer } from "redux-persist"
+
 // ...
 
-export const store = configureStore({
-  reducer: {
-    cars:carSlice,
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage,
+}
+
+const reducer = combineReducers({
+  cars:carSlice,
     cart:cartSlice
-  },
+})
+
+const persistedReducer = persistReducer(persistConfig, reducer)
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

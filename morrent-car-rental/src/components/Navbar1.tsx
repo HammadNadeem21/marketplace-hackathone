@@ -79,7 +79,7 @@ const Navbar1 = () => {
               <div className="relative flex items-center justify-center xs:w-10 xs:h-10 w-8 h-8 border rounded-full group">
                 <IoMdCart className="text-[#717e96] xs:text-[24px] text-[20px] group-hover:text-[#3563E9] transition-all duration-300" />
                 {cart.length > 0 && (
-                  <span className="absolute top-[1] right-0 text-[8px] bg-[#3563E9] text-white px-[5px] py-[1px] rounded-full">
+                  <span className="absolute top-0 right-0 text-[8px] bg-[#3563E9] text-white px-[5px] py-[1px] rounded-full">
                     {cart.length}
                   </span>
                 )}

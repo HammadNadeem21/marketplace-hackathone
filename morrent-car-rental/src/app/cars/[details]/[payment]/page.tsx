@@ -21,6 +21,7 @@ import { groq } from "next-sanity";
 import { Cars } from "../../../../../types/cars";
 import { urlFor } from "@/sanity/lib/image";
 import Navbar1 from "@/components/Navbar1";
+import { AlertDialogDemo } from "@/components/Checkout_Button";
 
 const PlusJakartaSans700 = Plus_Jakarta_Sans({
   weight: "700",
@@ -38,35 +39,35 @@ const PlusJakartaSans600 = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-
 // For Dynamic Car Data Routing
 interface carDetailPage {
-  params : Promise<{details : string}>
+  params: Promise<{ details: string }>;
 }
 
-async function getCarDetail (slug : string) : Promise<Cars> {
-return client.fetch(
-  groq`*[_type == "car" && slug.current == $slug][0]{
+async function getCarDetail(slug: string): Promise<Cars> {
+  return client.fetch(
+    groq`*[_type == "car" && slug.current == $slug][0]{
   name,
   pricePerDay,
   image,
   
-  }`,{slug}
-)
+  }`,
+    { slug }
+  );
 }
 
+const Payment = async ({
+  params,
+}: {
+  params: { details: string; payment: string };
+}) => {
+  const { details, payment } = await params;
+  const car = await getCarDetail(details);
 
-
-
-
-const Payment = async ({params}:{params:{details:string, payment:string}}) => {
-  const {details, payment} = await params;
-  const car = await getCarDetail(details)
-  
   return (
     <div>
       {/* Navbar */}
-     <Navbar1/>
+      <Navbar1 />
       <div className="grid lg:grid-cols-[30%,70%] grid-cols-1 px-6 gap-2">
         {/* right Side-(Start) */}
         <div className="w-full py-5">
@@ -88,7 +89,13 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
 
             <div className="w-full h-[108px] flex items-center mt-4">
               <div>
-                <Image src={car.image ?  urlFor(car.image).url() : ""} alt="view" height={500} width={500} className="w-[70%]" />
+                <Image
+                  src={car.image ? urlFor(car.image).url() : ""}
+                  alt="view"
+                  height={500}
+                  width={500}
+                  className="w-[70%]"
+                />
               </div>
 
               <div className="w-[200px] h-[72px] ml-2">
@@ -127,7 +134,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
               <h2
                 className={`${PlusJakartaSans600.className} text-[#1A202C] text-[16px]`}
               >
-                {car.pricePerDay.replace("/day","")}
+                {car.pricePerDay.replace("/day", "")}
               </h2>
             </div>
 
@@ -177,7 +184,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                 <h1
                   className={`${PlusJakartaSans700.className} text-[#1A202C] xs:text-[26px] text-[20px]`}
                 >
-                  {car.pricePerDay.replace("/day","")}
+                  {car.pricePerDay.replace("/day", "")}
                 </h1>
               </div>
             </div>
@@ -186,9 +193,8 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
 
         {/* Right-Side-(End) */}
 
+        {/* LeftSide (Start) */}
 
-{/* LeftSide (Start) */}
-      
         <div className="w-full py-5">
           {/* Billing Info (Start) */}
           <div className="bg-white rounded-lg w-full px-5 py-5">
@@ -278,8 +284,6 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
             </div>
           </div>
           {/* Billing Info (End) */}
-
-
 
           {/* Rational Info (Start) */}
 
@@ -434,11 +438,8 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
           </div>
           {/* Rational Info (End) */}
 
-
-
           {/* Payment Method (Start) */}
           <div className="w-full rounded-[10px] bg-white mt-5 px-6 py-5">
-
             {/* Top Heading */}
             <div className="w-full h-[48px]  flex justify-between">
               <div className="w-full md:w-[192px]">
@@ -479,8 +480,6 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
                   <Image src={logo} alt="visa-logo" />
                 </div>
               </div>
-
-
 
               <div className="w-full h-auto mt-6 grid sm:grid-cols-2 grid-cols-1 gap-4">
                 {/* Card number */}
@@ -582,9 +581,6 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
           </div>
           {/* Payment Method (End) */}
 
-
-
-
           {/* Confirmation Section (Start) */}
           <div className="w-full rounded-[10px] bg-white mt-5 px-6 py-5 ">
             <div className="w-full h-[48px]  flex justify-between">
@@ -637,11 +633,7 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
 
             {/* Button */}
             <div className="w-full h-[58px]  flex justify-between mt-6 px-3 py-3 rounded-[10px]">
-              <button
-                className={`${PlusJakartaSans700.className} text-[16px] text-white bg-[#3563E9] w-[140px] h-[58px] rounded-[10px] hover:bg-[#002fbb] transition-all duration-300`}
-              >
-                Rent Now
-              </button>
+              <AlertDialogDemo />
             </div>
 
             {/* Safe */}
@@ -665,13 +657,11 @@ const Payment = async ({params}:{params:{details:string, payment:string}}) => {
             </div>
           </div>
         </div>
-       {/* LeftSide (Start) */}
-
+        {/* LeftSide (Start) */}
       </div>
 
-      
       {/* Footer */}
-<Footer/>
+      <Footer />
     </div>
   );
 };

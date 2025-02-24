@@ -132,6 +132,9 @@ const CarCard = (props: {
         >
           Add to Cart
         </button>
+        {/* <div>
+        <AddToCartToast cartItem={cartItem}/>
+        </div> */}
       </div>
     </div>
   );

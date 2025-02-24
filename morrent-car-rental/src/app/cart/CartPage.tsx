@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 import React from "react";
 import { useAppSelector } from "../store/hooks";
+import { AlertDialogDemo } from "@/components/Checkout_Button";
 
 const CartPage = () => {
   const cartArray = useAppSelector((state) => state.cart);
@@ -73,9 +74,7 @@ const CartPage = () => {
             <div className="bg-black/50 h-[1px] mt-1 mb-1"></div>
             {/* checkout button */}
             <div className="flex items-center justify-center w-full ">
-              <Button className="hover:bg-[#002fbb] bg-[#3563E9] duration-300 text-white  scroll-m-20 text-xs font-semibold tracking-tight hover:shadow-md uppercase rounded-xl mt-1 mb-2">
-                Rent Now
-              </Button>
+              <AlertDialogDemo />
             </div>
             {/* Divider */}
             <div className="bg-black/50 h-[1px] mt-0 mb-1"></div>
